@@ -21,6 +21,7 @@ namespace Banking
             Console.WriteLine($"Aantal transacties: {aantal}");
 
             BankAccount savingsAccount = new SavingsAccount("123-4567890-02", 0.05M);
+            Console.WriteLine($"SavingsAccount : {savingsAccount}");
             savingsAccount.Deposit(200M);
             savingsAccount.Withdraw(100M);
             Console.WriteLine($"Balance savingsaccount: {savingsAccount.Balance} ");
