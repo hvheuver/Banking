@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Banking.Models;
 
 namespace Banking
@@ -12,8 +13,12 @@ namespace Banking
             Console.WriteLine($"Balance: {account.Balance} ");
             account.Deposit(200M);
             Console.WriteLine($"Balance after deposit of 200 euros: {account.Balance} ");
+            Console.WriteLine($"Number of transactions after deposit of 200 euros: {account.NumberOfTransactions} ");
             account.Withdraw(100M);
             Console.WriteLine($"Balance after withdraw 100 euros: {account.Balance} ");
+            Console.WriteLine($"Number of transactions after withdraw of 100 euros: {account.NumberOfTransactions} ");
+            int aantal = (account.GetTransactions(DateTime.Today.AddDays(-2), DateTime.Today)).Count();
+            Console.WriteLine($"Aantal transacties: {aantal}");
             Console.ReadKey();
         }
     }
