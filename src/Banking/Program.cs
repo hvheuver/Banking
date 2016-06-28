@@ -19,6 +19,11 @@ namespace Banking
             Console.WriteLine($"Number of transactions after withdraw of 100 euros: {account.NumberOfTransactions} ");
             int aantal = (account.GetTransactions(DateTime.Today.AddDays(-2), DateTime.Today)).Count();
             Console.WriteLine($"Aantal transacties: {aantal}");
+
+            BankAccount savingsAccount = new SavingsAccount("123-4567890-02", 0.05M);
+            savingsAccount.Deposit(200M);
+            savingsAccount.Withdraw(100M);
+            Console.WriteLine($"Balance savingsaccount: {savingsAccount.Balance} ");
             Console.ReadKey();
         }
     }
