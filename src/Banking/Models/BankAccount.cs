@@ -68,6 +68,10 @@ namespace Banking.Models
 
         public IEnumerable<Transaction> GetTransactions(DateTime? from, DateTime? till)
         {
+            if (from == null && till == null) return _transactions;
+            if (from == null) from = DateTime.MinValue;
+            if (!till.HasValue) till = DateTime.MaxValue;
+
             IList<Transaction> transList = new List<Transaction>();
             foreach (Transaction t in _transactions)
                 if (t.DateOfTrans >= from && t.DateOfTrans <= till)

@@ -1,4 +1,6 @@
-﻿namespace Banking.Models
+﻿using System;
+
+namespace Banking.Models
 {
     public class SavingsAccount : BankAccount
     {
@@ -21,6 +23,8 @@
         #region Methods
         public override void Withdraw(decimal amount)
         {
+            if (amount + WithdrawCost > Balance)
+                throw new InvalidOperationException("Balance cannot be negative");
             base.Withdraw(amount);
             base.Withdraw(WithdrawCost);
         }
